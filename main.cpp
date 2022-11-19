@@ -20,7 +20,6 @@ class UnboundedKnapsack
     * <li><b>Line:</b> Knapsack capacity</li>
     * <li><b>Column:</b> Elements</li>
     */
-    std::vector<std::vector<int> > selectedElements;
 
     /**
     * Stores maximum knapsack capacity.
@@ -37,6 +36,7 @@ public:
         maximumCapacity = -1;
     }
 
+    std::vector<std::vector<int> > selectedElements;
 
     //-------------------------------------------------------------------------
     //      Destructor
@@ -159,6 +159,7 @@ public:
 
         return response;
     }
+
 };
 
 
@@ -225,7 +226,8 @@ int main()
     // Create elements = len(startersColumn)
 
     UnboundedKnapsack* knapsack = new UnboundedKnapsack();
-    int totalCapacity = 29, elements = 48;
+    int totalCapacity = 10, elements = 48;
+    std::vector<std::string> element_name = { "Plate","Gear","Liquid","Wire","Ore","Cooler Plate","Engine","Heater Plate","Circuit","Light Bulb","HeadPhones","Battery","Air Conditioner","Toaster","Antenna","Clock","Solar Panel","Drill","Washing Machine","Grill","Processor","Power Supply","Radio","Speakers","SmartPhone","TV","Tablet","Fridge","SmartWatch","Railway","Jackhammer","Generator","Computer","Water Heater","Microwave","Drone","Server Rack","Oven","Lazer","Electric Board","Advanced Engine","Electric Generator","Super Computer","Electric Engine","AI Processor","AI Robot Body","AI Robot Head","AI Robot" };
     std::vector<int> elements_weight = { 1,1,1,1,1,3,3,3,3,4,5,5,5,5,5,5,6,7,7,7,8,9,13,14,15,16,17,18,19,20,20,22,23,25,25,30,30,50,58,72,300,680,1105,3200,4080,4280,4280,8560 };
     std::vector<int> elements_values = { 245,95,95,95,75,345,345,345,285,340,1275,1025,875,875,515,515,1140,1465,1065,565,1280,1875,5605,3230,7225,7020,7515,7310,10075,8300,6820,11710,10885,12775,7945,17070,10450,27050,31510,26640,68500,466600,544475,884000,2479600,2778600,4978600,14957200 };
     //std::vector<int> elements_values = { 345,285,340,1275,1025 };
@@ -239,6 +241,12 @@ int main()
         << knapsack->selectedElements_toString(totalCapacity)
         << std::endl;
 
+    for (int i = 0; i < knapsack->selectedElements.size(); i++){ // 11
+        std::cout << element_name[knapsack->selectedElements.size()] << std::endl;
+
+        //std::cout << "nth element" << std::endl;
+    }
+    //std::cout << "knapsack.size(): " << knapsack->selectedElements.at(1) << std::endl;
     system("pause");
 
     return 0;
